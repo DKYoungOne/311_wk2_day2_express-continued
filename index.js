@@ -1,6 +1,22 @@
 const express = require("express");
+const comments = require("./data/comments");
+const contacts = require("./data/contacts");
+const products = require("./data/products");
+const vehicles = require("./data/vehicles");
 const bodyParser = require("body-parser");
+const commentsRouter = require("./routes/comments");
+const contactsRouter = require('./routes/contacts');
+const vehiclesRouter = require('./routes/vehicles');
+const productsRouter = require('./routes/products');
+
 const app = express();
+
+app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(commentsRouter);
+app.use(contactsRouter);
+app.use(vehiclesRouter);
+app.use(productsRouter);
 
 const port = process.env.PORT || 4001;
 
